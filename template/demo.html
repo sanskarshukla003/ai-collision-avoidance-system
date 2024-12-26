@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Interactive Demo</h2>
+<form method="POST">
+    <h3>Update Vehicle Location</h3>
+    Latitude: <input type="text" name="latitude" required>
+    Longitude: <input type="text" name="longitude" required>
+    <button type="submit" name="update_location">Update Location</button>
+    <br><br>
+    <button type="submit" name="simulate_obstacle">Simulate Obstacle</button>
+    <button type="submit" name="check_collision">Check Collision</button>
+</form>
+{% if obstacles %}
+<h3>Obstacles:</h3>
+<ul>
+    {% for obstacle in obstacles %}
+    <li>{{ obstacle }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% if alert %}
+<p style="color: red;">{{ alert }}</p>
+{% endif %}
+{% if error %}
+<p style="color: red;">{{ error }}</p>
+{% endif %}
+{% endblock %}
